@@ -52,4 +52,87 @@ multiType= 20;
 multiType = true;
  
 
+//Functions 
+function add(num1:number,num2:number){
+    return num1+num2;
+}
+
+console.log(add(10,50));
+//Below line will give error. Type check is done because of number type added in function 
+//console.log(add(10,'50'));
+
+//optional parameter
+//Num2 is optional because of ? If we don't pass num2 it will be undefined  
+function addOptional(num1:number,num2? :number ){
+    //check for undefined
+    if(num2){
+        return num1+num2;
+    }
+    else{
+        return num1;
+    }
+}
+
+console.log(addOptional(5));
+console.log(addOptional(5,40));
+
+//Interface
+interface Person
+{
+    firstName:string,
+    lastName:string
+}
+
+function displayName(person:Person){
+    console.log(` Welcome  ${person.firstName} ${person.lastName}`);
+}
+
+let personoObject = {
+    firstName : "Ross",
+    lastName : "Joey"
+}
+
+displayName(personoObject);
+
+//Classes
+class Emplyee{
+    employeeName :string;
+
+    constructor(name:string){
+        this.employeeName = name;
+    }
+
+    greet(){
+        console.log(`Good morning ${this.employeeName}`);
+    }
+}
+
+let emp1  =  new Emplyee("Rachel");
+console.log(emp1.employeeName);
+emp1.greet();
+
+//Inheritance using classes
+class Manager extends Emplyee{
+    constructor(managerName:string){
+        super(managerName);
+    }
+
+    delegateWork(){
+        console.log("Manager delegating task");
+    }
+
+}
+
+let m1 = new Manager("Ross")
+m1.greet();
+m1.delegateWork();
+console.log(m1.employeeName)
+
+//Access modifiers
+//public, private and protexted
+//default is public so access everywhere
+//privare only in class
+//protected in class and in derived class
+
+
 

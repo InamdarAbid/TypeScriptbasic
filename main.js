@@ -1,4 +1,19 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 exports.__esModule = true;
 var message = "Hello World !";
 console.log(message);
@@ -40,3 +55,64 @@ randomValue = "Ross";
 var multiType;
 multiType = 20;
 multiType = true;
+//Functions 
+function add(num1, num2) {
+    return num1 + num2;
+}
+console.log(add(10, 50));
+//Below line will give error. Type check is done because of number type added in function 
+//console.log(add(10,'50'));
+//optional parameter
+//Num2 is optional because of ? If we don't pass num2 it will be undefined  
+function addOptional(num1, num2) {
+    //check for undefined
+    if (num2) {
+        return num1 + num2;
+    }
+    else {
+        return num1;
+    }
+}
+console.log(addOptional(5));
+console.log(addOptional(5, 40));
+function displayName(person) {
+    console.log(" Welcome  ".concat(person.firstName, " ").concat(person.lastName));
+}
+var personoObject = {
+    firstName: "Ross",
+    lastName: "Joey"
+};
+displayName(personoObject);
+//Classes
+var Emplyee = /** @class */ (function () {
+    function Emplyee(name) {
+        this.employeeName = name;
+    }
+    Emplyee.prototype.greet = function () {
+        console.log("Good morning ".concat(this.employeeName));
+    };
+    return Emplyee;
+}());
+var emp1 = new Emplyee("Rachel");
+//console.log(emp1.employeeName);
+emp1.greet();
+//Inheritance using classes
+var Manager = /** @class */ (function (_super) {
+    __extends(Manager, _super);
+    function Manager(managerName) {
+        return _super.call(this, managerName) || this;
+    }
+    Manager.prototype.delegateWork = function () {
+        console.log("Manager delegating task");
+    };
+    return Manager;
+}(Emplyee));
+var m1 = new Manager("Ross");
+m1.greet();
+m1.delegateWork();
+//console.log(m1.employeeName)
+//Access modifiers
+//public, private and protexted
+//default is public so access everywhere
+//privare only in class
+//protected in class and in derived class
